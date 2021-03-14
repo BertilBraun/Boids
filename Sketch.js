@@ -30,15 +30,15 @@ function setup() {
 
     reset();
     
-    console.time('update')
-    for (var i = 0; i < 10000; i++)
-    system.update()
-    console.timeEnd('update')
+    // console.time('update')
+    // for (var i = 0; i < 10000; i++)
+    // system.update()
+    // console.timeEnd('update')
 
-    console.time('updateOld')
-    for (var i = 0; i < 10000; i++)
-    system.updateOld()
-    console.timeEnd('updateOld')
+    // console.time('updateOld')
+    // for (var i = 0; i < 10000; i++)
+    // system.updateOld()
+    // console.timeEnd('updateOld')
 
 }
 
