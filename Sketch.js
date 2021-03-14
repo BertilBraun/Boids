@@ -2,7 +2,7 @@ var system;
 
 var boidCount = 200;
 
-var seperationSlider; 
+var seperationSlider;
 var alignmentSlider;
 var cohesionSlider;
 var boidCountSlider;
@@ -22,13 +22,24 @@ function setup() {
     alignmentSlider = createSlider(0, 0.4, 0.05, 0.01)
     createP('cohesion')
     cohesionSlider = createSlider(0, 0.4, 0.05, 0.01)
-    
+
     createP('boidCount')
     boidCountSlider = createSlider(1, 1000, 200, 10)
     createP('vision')
     visionSlider = createSlider(0, 200, 50, 2)
 
     reset();
+    
+    console.time('update')
+    for (var i = 0; i < 10000; i++)
+    system.update()
+    console.timeEnd('update')
+
+    console.time('updateOld')
+    for (var i = 0; i < 10000; i++)
+    system.updateOld()
+    console.timeEnd('updateOld')
+
 }
 
 function draw() {
@@ -37,7 +48,7 @@ function draw() {
         boidCount = boidCountSlider.value()
         reset()
     }
-    
+
     localThreshold = visionSlider.value()
 
     seperationFactor = seperationSlider.value()
@@ -46,6 +57,7 @@ function draw() {
 
     background(20);
     strokeWeight(6);
+
     system.update()
     system.draw()
 }

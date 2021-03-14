@@ -20,6 +20,44 @@ class Flock {
     }
 
     update() {
+
+        const spacialSeperation = new Array(height / localThreshold + 1);
+        for (var i = 0; i < height / localThreshold + 1; i++) {
+            spacialSeperation[i] = new Array(width / localThreshold + 1);
+            for (var j = 0; j < width / localThreshold + 1; j++)
+                spacialSeperation[i][j] = []
+        }
+
+        for (const boid of this.boids) {
+            const x = floor(boid.pos.x / localThreshold)
+            const y = floor(boid.pos.y / localThreshold)
+
+            spacialSeperation[y][x].push(boid)
+        }
+
+        for (const boid of this.boids) {
+            const locals = []
+
+            const x = floor(boid.pos.x / localThreshold)
+            const y = floor(boid.pos.y / localThreshold)
+
+            for (var i = -1; i <= 1; i++)
+                for (var j = -1; j <= 1; j++) {
+                    if (i + x >= 0 && i + x < width / localThreshold &&
+                        j + y >= 0 && j + y < height / localThreshold) {
+
+                        for (const other of spacialSeperation[j + y][i + x]) {
+                            if (boid != other && boid.pos.dist(other.pos) < localThreshold)
+                                locals.push(other)
+                        }
+                    }
+                }
+
+            boid.update(locals)
+        }
+    }
+
+    updateOld() {
         for (const boid of this.boids) {
             const locals = []
 

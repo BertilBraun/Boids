@@ -18,6 +18,15 @@ The rules applied in the simplest Boids world are as follows:
 - wall avoidance: steer await from incoming walls
 - mouse avoidance: steer await from the mouse position if it is too close
 
+## Optimisation
+
+Implemented spacial seperation to gain a speed up of:
+
+| Variant | time for 10.000 iter |
+| ------- | -------------------- |
+| old     | 32479.55 ms          |
+| new     | 21859.13 ms          |
+
 ## Future
 
- - [ ] implementation of optimisation using spacial seperation
+ - [x] implementation of optimisation using spacial seperation
