@@ -38,15 +38,15 @@ function setup() {
 function draw() {
 
     if (boidCountSlider.value != boidCount) {
-        boidCount = boidCountSlider.value
+        boidCount = Number(boidCountSlider.value)
         reset()
     }
 
-    localThreshold = visionSlider.value
+    localThreshold = Number(visionSlider.value)
 
-    seperationFactor = seperationSlider.value
-    alignmentFactor = alignmentSlider.value
-    cohesionFactor = cohesionSlider.value
+    seperationFactor = Number(seperationSlider.value)
+    alignmentFactor = Number(alignmentSlider.value)
+    cohesionFactor = Number(cohesionSlider.value)
 
     background(20);
     strokeWeight(6);

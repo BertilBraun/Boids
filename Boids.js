@@ -43,8 +43,8 @@ class Flock {
 
             for (var i = -1; i <= 1; i++)
                 for (var j = -1; j <= 1; j++) {
-                    if (i + x >= 0 && i + x < width / localThreshold &&
-                        j + y >= 0 && j + y < height / localThreshold) {
+                    if (i + x >= 0 && i + x < floor(width / localThreshold) &&
+                        j + y >= 0 && j + y < floor(height / localThreshold)) {
 
                         for (const other of spacialSeperation[j + y][i + x]) {
                             if (boid != other && boid.pos.dist(other.pos) < localThreshold)
@@ -61,7 +61,7 @@ class Flock {
         for (const boid of this.boids) {
             const locals = []
 
-            // TODO optimize using spacial seperation
+            // optimized using spacial seperation
             for (const other of this.boids) {
                 if (boid != other && boid.pos.dist(other.pos) < localThreshold)
                     locals.push(other)
